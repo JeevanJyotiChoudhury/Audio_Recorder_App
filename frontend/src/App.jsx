@@ -1,11 +1,12 @@
-import './App.css';
+import React from 'react'
+import Recorder from './Components/Recorder'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      
+    <div>
+      <Recorder/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
