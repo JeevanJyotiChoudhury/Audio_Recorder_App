@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Recorder.css"
+import "../styles/Recorder.css"
 
 const Recorder = () => {
   const [audioBlob, setAudioBlob] = useState(null);
@@ -15,7 +15,7 @@ const Recorder = () => {
   const fetchAudioList = async () => {
     try {
       const response = await axios.get(
-        "https://gold-relieved-cormorant.cyclic.app/api/audios/getaudio"
+        "http://localhost:8080/api/audios/getaudio"
       );
       setAudioList(response.data);
     } catch (error) {
@@ -84,7 +84,7 @@ const Recorder = () => {
       const formData = new FormData();
       formData.append("audio", audioBlob);
       const response = await axios.post(
-        "https://gold-relieved-cormorant.cyclic.app/api/audios",
+        "http://localhost:8080/api/audios",
         formData,
         {
           headers: {
