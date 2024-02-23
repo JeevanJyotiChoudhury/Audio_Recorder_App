@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../styles/Recorder.css"
+import "../styles/Recorder.css";
 
 const Recorder = () => {
   const [audioBlob, setAudioBlob] = useState(null);
@@ -78,7 +78,6 @@ const Recorder = () => {
     setCurrentAudio(audioPlayer);
   };
 
-
   const handleUpload = async () => {
     try {
       const formData = new FormData();
@@ -120,6 +119,7 @@ const Recorder = () => {
         </button>
       </div>
       <div className="audio-list">
+        <h3>Previous audio files</h3>
         {audioList.map((audio, index) => (
           <div className="audio-item" key={index}>
             <button onClick={() => handlePlayMapped(audio.audioUrl)}>
