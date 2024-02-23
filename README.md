@@ -2,13 +2,13 @@
 
 # Introduction
 
--> A simple audio recording app using react, node, express, mongoDB and aws. We can record audio play the recorded audio pause as well as resume and upload to the cloud.
+-> A simple audio recording app using react, node, express, mongoDB and aws. We can record audio(15 sec), play the recorded audio, pause as well as resume and upload to the cloud. Also I have get the previously recorded audio from cloud and we can play and pause them.
 
 # Deployed Links
 
--> Frontend : 
+-> Frontend : https://audio-recorder-app.vercel.app/
 
--> Backend : https://gold-relieved-cormorant.cyclic.app
+-> Backend : https://gold-relieved-cormorant.cyclic.app (in the application I have used the local server)
 
 # Features
 
@@ -17,6 +17,8 @@
 -> Play, pause and resume the recorded audio.
 
 -> Upload the audio to the cloud.
+
+-> Play and pause previously recorded audio from cloud.
 
 # Installation and getting started
 
@@ -41,4 +43,4 @@
 
 # Demo Video
 
--> URL : 
+-> URL : https://drive.google.com/drive/folders/1QG3OBDrViKJNBcfPz-0Stuy0lF2L5-OH?usp=sharing
