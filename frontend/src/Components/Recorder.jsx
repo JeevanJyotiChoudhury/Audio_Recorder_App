@@ -7,6 +7,7 @@ const Recorder = () => {
   const [recording, setRecording] = useState(false);
   const [audioList, setAudioList] = useState([]);
   const [currentAudio, setCurrentAudio] = useState(null);
+  const [mediaRecorder, setMediaRecorder] = useState(null);
 
   useEffect(() => {
     fetchAudioList();
@@ -27,24 +28,28 @@ const Recorder = () => {
     setRecording(true);
     setAudioBlob(null);
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-      const mediaRecorder = new MediaRecorder(stream);
+      const recorder = new MediaRecorder(stream);
+      setMediaRecorder(recorder);
       const audioChunks = [];
 
-      mediaRecorder.addEventListener("dataavailable", (event) => {
+      recorder.addEventListener("dataavailable", (event) => {
         audioChunks.push(event.data);
       });
 
-      mediaRecorder.addEventListener("stop", () => {
+      recorder.addEventListener("stop", () => {
         const audioBlob = new Blob(audioChunks, { type: "audio/mp3" });
         setAudioBlob(audioBlob);
         setRecording(false);
       });
 
-      mediaRecorder.start();
-      setTimeout(() => {
-        mediaRecorder.stop();
-      }, 15000);
+      recorder.start();
     });
+  };
+
+  const handleStopRecording = () => {
+    if (mediaRecorder && recording) {
+      mediaRecorder.stop();
+    }
   };
 
   const handlePlayRecorded = () => {
@@ -69,7 +74,6 @@ const Recorder = () => {
   };
 
   const handlePlayMapped = (audioUrl) => {
-    console.log("Playing mapped audio:", audioUrl);
     if (currentAudio) {
       currentAudio.pause();
     }
@@ -102,9 +106,11 @@ const Recorder = () => {
   return (
     <div className="recorder-container">
       <div className="button-container">
-        <button onClick={handleStartRecording} disabled={recording}>
-          Start Recording
-        </button>
+        {!recording ? (
+          <button onClick={handleStartRecording}>Start Recording</button>
+        ) : (
+          <button onClick={handleStopRecording}>Stop Recording</button>
+        )}
         <button onClick={handlePlayRecorded} disabled={!audioBlob}>
           Play Recorded
         </button>
