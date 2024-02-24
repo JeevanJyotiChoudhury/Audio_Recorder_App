@@ -26,6 +26,7 @@
 .button-container button:disabled {
   background-color: gray;
   cursor: not-allowed;
+  color:white;
 }
 
 .button-container button.start-recording {
