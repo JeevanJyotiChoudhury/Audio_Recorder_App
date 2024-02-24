@@ -15,7 +15,7 @@ const Recorder = () => {
   const fetchAudioList = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/audios/getaudio"
+        "https://gold-relieved-cormorant.cyclic.app/api/audios/getaudio"
       );
       setAudioList(response.data);
     } catch (error) {
@@ -83,7 +83,7 @@ const Recorder = () => {
       const formData = new FormData();
       formData.append("audio", audioBlob);
       const response = await axios.post(
-        "http://localhost:8080/api/audios",
+        "https://gold-relieved-cormorant.cyclic.app/api/audios",
         formData,
         {
           headers: {
