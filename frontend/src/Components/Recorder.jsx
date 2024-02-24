@@ -123,7 +123,7 @@ const Recorder = () => {
         {audioList.map((audio, index) => (
           <div className="audio-item" key={index}>
             <button onClick={() => handlePlayMapped(audio.audioUrl)}>
-              Play Mapped
+              Play
             </button>
             <audio controls>
               <source src={audio.audioUrl} type="audio/mp3" />
